@@ -54,3 +54,10 @@ class ArvoreNo:
 
             self.gera_binario(no_atual.obter_esquerda())
             self.gera_binario(no_atual.obter_direita())
+
+    def retorna_bin(self, no_atual, bi):
+        if no_atual is not None:
+            self.retorna_bin(no_atual.obter_esquerda(), bi)
+            self.retorna_bin(no_atual.obter_direita(), bi)
+            if len(no_atual.chave) == 1:
+                bi[no_atual.chave] = no_atual.bi
