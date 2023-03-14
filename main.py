@@ -1,4 +1,3 @@
-from arvore import ArvoreNo
 from Huffman import Huffman
 
 with open('teste.txt', 'r') as arquivo:
@@ -21,15 +20,13 @@ todos_binarios = ""
 for char in texto:
     todos_binarios = todos_binarios + bi[char]
 
-#char = '0b' + todos_binarios[0:8]
-#aux = chr(int(char, 2))
-#print(bin(ord(aux)))
 
-char = ""
-for elem in range(8, len(todos_binarios), 8):
-    aux = '0b' + todos_binarios[elem-8:elem]
-    char = char + chr(int(aux,2))
+print(todos_binarios)
 
-with open('compactar.txt', 'w') as arquivo:
+with open('compactar.dv1', 'w') as arquivo:
     arquivo.write(str(ordenado))
-    arquivo.write(char)
+
+with open('compactar.dv2', 'w') as arquivo:
+    for elem in range(0, int(len(todos_binarios)/8)):
+        aux = '0b' + todos_binarios[8 * elem: 8 * (elem + 1)]
+        arquivo.write(chr(int(aux, 2)))
